@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Health — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="healthcss.css" />
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+
+
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    <ul class="nav-links">
+      <li><a href="qrindex.html">QRNode</a></li>
+      <li><a href="timeindex.html">Time</a></li>
+      <li><a href="converterindex.html">Converter</a></li>
+      <li><a href="forge.html">FORGE</a></li>
+      <li><a href="attempthtml.html">Eligibility</a></li>
+      <li><a href="healthhtml.html" class="active">Health</a></li>
+      
+      <li><a href="loanhtml.html">Loan</a></li>
+    </ul>
+    
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>Your body, a quiet constellation</h1>
+      <p>Calculate BMI and explore BMR, body fat, and gentle goal guidance—clean, fast, and reassuring.</p>
+    </div>
+  </header>
+
+
+
+  <main class="shell route-content">
+    <section class="workbench">
+      <div class="left-col stretch">
+        <div class="card form-card fill">
+          <div class="card-head">
+            <h2>Inputs</h2>
+            <div class="head-actions">
+              <div class="seg tiny gender-tabs" role="tablist" aria-label="Gender">
+                <label><input type="radio" name="genderTab" value="male" /> Male</label>
+                <label><input type="radio" name="genderTab" value="female" /> Female</label>
+                <label><input type="radio" name="genderTab" value="na" checked /> Prefer not</label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="grid-2">
+            <div class="group">
+              <label>Height Unit</label>
+              <div class="seg">
+                <label><input type="radio" name="heightUnit" value="cm" checked> cm</label>
+                <label><input type="radio" name="heightUnit" value="ftin"> ft/in</label>
+              </div>
+            </div>
+            <div class="group">
+              <label>Weight Unit</label>
+              <div class="seg">
+                <label><input type="radio" name="weightUnit" value="kg" checked> kg</label>
+                <label><input type="radio" name="weightUnit" value="lbs"> lbs</label>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="grid-3">
+            <div class="group height-cm">
+              <label for="heightCm">Height (cm)</label>
+              <input type="number" id="heightCm" min="50" max="260" step="0.1" placeholder="e.g., 175">
+            </div>
+            <div class="group height-ftin hidden">
+              <label>Height (ft/in)</label>
+              <div class="grid-2">
+                <input type="number" id="heightFt" min="2" max="8" step="1" placeholder="ft">
+                <input type="number" id="heightIn" min="0" max="11.9" step="0.1" placeholder="in">
+              </div>
+            </div>
+            <div class="group">
+              <label for="weight">Weight</label>
+              <input type="number" id="weight" min="20" max="400" step="0.1" placeholder="e.g., 68">
+            </div>
+          </div>
+
+
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="age">Age (optional)</label>
+              <input type="number" id="age" min="5" max="100" step="1" placeholder="e.g., 28">
+            </div>
+            <div class="group">
+              <label for="activity">Activity</label>
+              <select id="activity">
+                <option value="sedentary">Sedentary</option>
+                <option value="light">Light</option>
+                <option value="moderate">Moderate</option>
+                <option value="intense">Intense</option>
+              </select>
+            </div>
+            <div class="group only-female hidden">
+              <label for="hip">Hip (female)</label>
+              <input type="number" id="hip" min="20" max="200" step="0.1" placeholder="cm or in">
+            </div>
+          </div>
+
+
+
+          <details class="addon collapsible">
+            <summary>Body Measurements (optional)</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="waist">Waist</label>
+                  <input type="number" id="waist" min="20" max="200" step="0.1" placeholder="cm or in">
+                </div>
+                <div class="group">
+                  <label for="neck">Neck</label>
+                  <input type="number" id="neck" min="15" max="70" step="0.1" placeholder="cm or in">
+                </div>
+                <div class="group only-female hidden">
+                  <label for="hip2">Hip (female)</label>
+                  <input type="number" id="hip2" min="20" max="200" step="0.1" placeholder="cm or in">
+                </div>
+              </div>
+              <div class="group">
+                <label>Measure Unit</label>
+                <div class="seg">
+                  <label><input type="radio" name="circUnit" value="cm" checked> cm</label>
+                  <label><input type="radio" name="circUnit" value="in"> in</label>
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+
+          <details class="addon collapsible">
+            <summary>Goal Tracker (optional)</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="targetWeight">Target Weight</label>
+                  <input type="number" id="targetWeight" min="20" max="400" step="0.1" placeholder="e.g., 65">
+                </div>
+                <div class="group">
+                  <label for="targetTimeline">Timeline</label>
+                  <input type="number" id="targetTimeline" min="1" max="104" step="1" placeholder="e.g., 8">
+                </div>
+                <div class="group">
+                  <label for="timelineUnit">Unit</label>
+                  <select id="timelineUnit">
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+
+          <div class="actions stick-bottom">
+            <button type="button" id="calcBtn" class="btn primary">Calculate</button>
+            <button type="reset" id="resetBtn" class="btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="card result-card fill">
+        <div class="card-head">
+          <h3>Preview</h3>
+          <span class="eye"></span>
+        </div>
+
+
+
+        <output id="result" role="region" aria-live="polite" class="result-wrap">—</output>
+
+
+
+        <div class="stack">
+          <div class="bloc">
+            <div class="bloc-head">
+              <h4><span class="ico scale">⚖️</span> BMI</h4>
+              <span class="chip" id="bmiCategory">—</span>
+            </div>
+            <div class="meter">
+              <div id="bmiMeter" class="fill"></div>
+            </div>
+            <p class="readout">
+              <strong id="bmiValue">—</strong> BMI • Ideal: <strong id="idealRange">—</strong>
+            </p>
+            <p class="whisper" id="bmiWhisper">“This isn’t a number—it’s a whisper from within.”</p>
+          </div>
+
+
+
+          <div class="bloc subtle-bloc" id="idealCopyBloc">
+            <p class="note" id="idealCopy">Your body thrives between —. The rest is nuance.</p>
+          </div>
+
+
+
+          <details class="bloc collapsible">
+            <summary>
+              <div class="bloc-head">
+                <h4><span class="ico pulse">📈</span> BMR & Calories</h4>
+                <span class="chip subtle">expand</span>
+              </div>
+            </summary>
+            <div class="anim-wrap">
+              <div class="grid-2">
+                <div class="kpi">
+                  <div id="bmrValue" class="kpi-num">—</div>
+                  <div class="kpi-label">BMR (kcal/day)</div>
+                </div>
+                <div class="kpi">
+                  <div id="tdeeValue" class="kpi-num">—</div>
+                  <div class="kpi-label">TDEE (kcal/day)</div>
+                </div>
+              </div>
+              <p class="note" id="bmrCopy">To stay where you are, you need — kcal/day. Movement changes everything.</p>
+            </div>
+          </details>
+
+
+
+          <details class="bloc collapsible">
+            <summary>
+              <div class="bloc-head">
+                <h4><span class="ico body">🧭</span> Body Fat</h4>
+                <span class="chip subtle">expand</span>
+              </div>
+            </summary>
+            <div class="anim-wrap">
+              <div class="grid-2">
+                <div class="kpi">
+                  <div id="bfPercent" class="kpi-num">—</div>
+                  <div class="kpi-label">Body Fat %</div>
+                </div>
+                <div class="kpi">
+                  <div id="bfClass" class="kpi-num">—</div>
+                  <div class="kpi-label">Classification</div>
+                </div>
+              </div>
+              <p class="note">U.S. Navy method using height, neck, waist, and hip (for females).</p>
+              <p class="note" id="bfCopy">Your body fat is — — a quiet balance of strength and softness.</p>
+            </div>
+          </details>
+
+
+
+          <details class="bloc collapsible">
+            <summary>
+              <div class="bloc-head">
+                <h4><span class="ico flame">🔥</span> Goals</h4>
+                <span class="chip subtle">expand</span>
+              </div>
+            </summary>
+            <div class="anim-wrap">
+              <div class="grid-2">
+                <div class="kpi">
+                  <div id="weeklyChange" class="kpi-num">—</div>
+                  <div class="kpi-label">Needed / week</div>
+                </div>
+                <div class="kpi">
+                  <div id="dailyKcal" class="kpi-num">—</div>
+                  <div class="kpi-label">Approx kcal/day</div>
+                </div>
+              </div>
+              <p class="note" id="goalNote">To reach — in —, aim for ~— kcal —/day. Small steps, steady climb.</p>
+            </div>
+          </details>
+
+
+
+          <div class="bloc tips-bloc">
+            <div class="bloc-head">
+              <h4><span class="ico leaf">🌿</span> Health Tips</h4>
+            </div>
+            <ul class="tips" id="tipsList">
+              <li>Enter height and weight to see tailored guidance.</li>
+            </ul>
+            <p class="note surreal">Optional surreal mode: “Your body is a map. This is just one coordinate.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+
+
+  <script src="healthjs.js"></script>
+  <script src="transition.js"></script>
+  
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html" class="active">Health</a>
+      <a href="loanhtml.html">Loan</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>
