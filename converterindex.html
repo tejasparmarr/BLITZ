@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Converter — BLITZ Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="convertercss.css" />
+</head>
+<body>
+  
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item active">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+    
+    <!-- Mobile Hamburger (unchanged) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>From meters to moonlight, it's all here</h1>
+      <p>Convert units, currency, and more with beautiful controls, presets, and live results — all with smooth interactions.</p>
+    </div>
+  </header>
+
+
+  <main class="container route-content">
+    
+    <section class="form-section">
+      <form id="conv-form" autocomplete="off" onsubmit="event.preventDefault();">
+      
+        <div class="form-group">
+          <label class="label">Conversion Type</label>
+          <div class="segmented" role="tablist">
+            
+          </div>
+        </div>
+
+
+        
+        <div class="form-row value-row">
+          <div class="form-group" style="flex:1 1 260px">
+            <label class="label" for="value-input">Value</label>
+            <input class="input-like" type="number" id="value-input" placeholder="Enter value" inputmode="decimal" />
+          </div>
+
+
+          <div class="form-group" style="flex:1 1 260px">
+            <label class="label" for="precision-input">Precision</label>
+            <div class="range-wrap">
+              <input id="precision-input" type="range" min="0" max="8" value="2" />
+              <span id="precision-display">2</span>
+            </div>
+          </div>
+        </div>
+
+
+        
+        <div class="form-row">
+          <div class="form-group" style="flex:1 1 260px">
+            <label class="label" for="from-unit">From</label>
+            <select id="from-unit"></select>
+          </div>
+          <div class="form-group" style="flex:1 1 260px">
+            <label class="label" for="to-unit">To</label>
+            <select id="to-unit"></select>
+          </div>
+        </div>
+
+
+        
+        <div class="form-row">
+          <button id="swap-btn" type="button" class="pill">Swap Units</button>
+          <div class="preset-row">
+            <button type="button" class="chip" data-preset="cm->in">cm → in</button>
+            <button type="button" class="chip" data-preset="m->ft">m → ft</button>
+            <button type="button" class="chip" data-preset="kg->lb">kg → lb</button>
+            <button type="button" class="chip" data-preset="c->f">°C → °F</button>
+          </div>
+        </div>
+
+
+        
+        <div class="form-row">
+          <label class="toggle fancy">
+            <input type="checkbox" id="thousands" />
+            <span class="fancy-box" aria-hidden="true">
+              <span class="fancy-check">✓</span>
+            </span>
+            <span class="fancy-text">Thousand separators</span>
+          </label>
+
+
+          <label class="toggle fancy">
+            <input type="checkbox" id="auto-copy" />
+            <span class="fancy-box" aria-hidden="true">
+              <span class="fancy-check">✓</span>
+            </span>
+            <span class="fancy-text">Auto copy on change</span>
+          </label>
+        </div>
+      </form>
+    </section>
+
+
+    
+    <section class="qr-preview-section result-card">
+      <div class="qr-wrapper result-wrap">
+        <div class="result-value" id="resultValue">—</div>
+        <div class="result-sub" id="resultSub">0 length units</div>
+      </div>
+
+
+      <div class="stats">
+        <div class="stat-item"><span>∞</span> Units</div>
+        <div class="stat-item"><span id="miniPrecision">2</span> Precision</div>
+        <div class="stat-item"><span>✓</span> Live Preview</div>
+        <div class="stat-item"><span id="miniLocale">en-IN</span> Locale</div>
+      </div>
+
+
+      <div class="actions">
+        <button id="copyBtn" class="btn primary" type="button">Copy</button>
+        <button id="saveTxtBtn" class="btn" type="button">Save .txt</button>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+
+  
+  <script src="converterjs.js"></script>
+  <script src="transition.js"></script>
+  
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html" class="active">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

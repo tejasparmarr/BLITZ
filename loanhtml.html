@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Loan & EMI — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="loancss.css"/>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item active">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+   
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>Borrow wisely, breathe steadily</h1>
+      <p>Plan EMIs, visualize interest vs principal, and see a clear path to freedom—personalized, gentle, precise.</p>
+    </div>
+  </header>
+
+
+  <main class="shell route-content">
+    <section class="workbench stretch-grid">
+      <div class="left-col">
+        <div class="card form-card fill-height">
+          <div class="card-head">
+            <h2>Inputs</h2>
+            <div class="head-actions"></div>
+          </div>
+
+
+          <div class="grid-2">
+            <div class="group">
+              <label for="loanAmount">Loan Amount</label>
+              <input type="number" id="loanAmount" min="0" step="1000" placeholder="e.g., 500000">
+            </div>
+            <div class="group">
+              <label for="interestRate">Interest Rate (annual %)</label>
+              <input type="number" id="interestRate" min="0" step="0.01" placeholder="e.g., 10.5">
+            </div>
+          </div>
+
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="tenure">Tenure</label>
+              <input type="number" id="tenure" min="1" step="1" placeholder="e.g., 24">
+            </div>
+            <div class="group">
+              <label for="tenureUnit">Tenure Unit</label>
+              <select id="tenureUnit">
+                <option value="months">Months</option>
+                <option value="years">Years</option>
+              </select>
+            </div>
+            <div class="group">
+              <label for="frequency">Repayment Frequency</label>
+              <select id="frequency">
+                <option value="monthly" selected>Monthly</option>
+                <option value="biweekly">Bi-weekly</option>
+                <option value="weekly">Weekly</option>
+              </select>
+            </div>
+          </div>
+
+
+          <details class="addon collapsible">
+            <summary>Costs & Adjustments (optional)</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="downPayment">Down Payment</label>
+                  <input type="number" id="downPayment" min="0" step="1000" placeholder="e.g., 100000">
+                </div>
+                <div class="group">
+                  <label for="processingFee">Processing Fee</label>
+                  <input type="number" id="processingFee" min="0" step="100" placeholder="e.g., 1500">
+                </div>
+                <div class="group">
+                  <label for="loanType">Loan Type</label>
+                  <select id="loanType">
+                    <option value="personal">Personal</option>
+                    <option value="home">Home</option>
+                    <option value="vehicle">Vehicle</option>
+                    <option value="education">Education</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+          <details class="addon collapsible">
+            <summary>Borrower Profile (optional)</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="age">Age</label>
+                  <input type="number" id="age" min="18" max="80" step="1" placeholder="e.g., 24">
+                </div>
+                <div class="group">
+                  <label for="incomeRange">Income Range</label>
+                  <select id="incomeRange">
+                    <option value="lt3">Under ₹3L</option>
+                    <option value="3to6">₹3–6L</option>
+                    <option value="6to12">₹6–12L</option>
+                    <option value="gt12">₹12L+</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="employment">Employment</label>
+                  <select id="employment">
+                    <option value="salaried">Salaried</option>
+                    <option value="self">Self-employed</option>
+                    <option value="student">Student</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+          <details class="addon collapsible">
+            <summary>Early Repayment Simulation</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="prepayAmount">One-time Prepayment</label>
+                  <input type="number" id="prepayAmount" min="0" step="1000" placeholder="e.g., 50000">
+                </div>
+                <div class="group">
+                  <label for="prepayAt">Prepay After</label>
+                  <input type="number" id="prepayAt" min="1" step="1" placeholder="e.g., 6">
+                </div>
+                <div class="group">
+                  <label for="prepayUnit">Prepay Unit</label>
+                  <select id="prepayUnit">
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+          <div class="actions mt-auto">
+            <button type="button" id="calcBtn" class="btn primary">Calculate</button>
+            <button type="reset" id="resetBtn" class="btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card result-card fill-height">
+        <div class="card-head">
+          <h3>Preview</h3>
+          <span class="eye"></span>
+        </div>
+
+
+        <output id="result" role="region" aria-live="polite" class="result-wrap">—</output>
+
+
+        <div class="stack">
+          <div class="bloc">
+            <div class="bloc-head">
+              <h4>EMI Summary</h4>
+              <span class="chip" id="emiFreqChip">—</span>
+            </div>
+            <div class="grid-3">
+              <div class="kpi">
+                <div id="emiValue" class="kpi-num">—</div>
+                <div class="kpi-label">Installment</div>
+              </div>
+              <div class="kpi">
+                <div id="totalInterest" class="kpi-num">—</div>
+                <div class="kpi-label">Total Interest</div>
+              </div>
+              <div class="kpi">
+                <div id="totalPayment" class="kpi-num">—</div>
+                <div class="kpi-label">Total Payment</div>
+              </div>
+            </div>
+            <p class="note" id="timelineNote">—</p>
+            <p class="whisper" id="poeticLine">This loan walks beside you—steady, not silent.</p>
+          </div>
+
+
+          <div class="bloc">
+            <div class="bloc-head">
+              <h4>Composition</h4>
+              <span class="chip subtle">principal vs interest</span>
+            </div>
+            nvas id="pieChart" width="360360" height="180" class="chart"></canvas>
+          </div>
+
+
+          <details class="bloc collapsible">
+            <summary>
+              <div class="bloc-head">
+                <h4>Amortization</h4>
+                <span class="chip subtle">expand</span>
+              </div>
+            </summary>
+            <div class="anim-wrap">
+              <div class="table-wrap">
+                <table class="amo">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Payment</th>
+                      <th>Interest</th>
+                      <th>Principal</th>
+                      <th>Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody id="amoBody">
+                    <tr><td colspan="5" class="dim">Enter details to generate schedule.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </details>
+
+
+          <details class="bloc collapsible">
+            <summary>
+              <div class="bloc-head">
+                <h4>Compare Scenarios</h4>
+                <span class="chip subtle">expand</span>
+              </div>
+            </summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="altRate">Alt. Rate %</label>
+                  <input type="number" id="altRate" min="0" step="0.01" placeholder="e.g., 9.8">
+                </div>
+                <div class="group">
+                  <label for="altTenure">Alt. Tenure</label>
+                  <input type="number" id="altTenure" min="1" step="1" placeholder="e.g., 60">
+                </div>
+                <div class="group">
+                  <label for="altTenureUnit">Alt. Unit</label>
+                  <select id="altTenureUnit">
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                  </select>
+                </div>
+              </div>
+              <div class="actions">
+                <button type="button" class="btn tiny" id="compareBtn">Compare</button>
+              </div>
+              <div class="compare-grid">
+                <div class="compare-col">
+                  <h5>Current</h5>
+                  <div class="cmp"><span>EMI:</span><strong id="cmpEmiA">—</strong></div>
+                  <div class="cmp"><span>Total Interest:</span><strong id="cmpIntA">—</strong></div>
+                  <div class="cmp"><span>Total Payment:</span><strong id="cmpPayA">—</strong></div>
+                </div>
+                <div class="compare-col">
+                  <h5>Alternative</h5>
+                  <div class="cmp"><span>EMI:</span><strong id="cmpEmiB">—</strong></div>
+                  <div class="cmp"><span>Total Interest:</span><strong id="cmpIntB">—</strong></div>
+                  <div class="cmp"><span>Total Payment:</span><strong id="cmpPayB">—</strong></div>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="stats">
+          <div class="stat-item"><span>✓</span> EMI clarity</div>
+          <div class="stat-item"><span>🗓️</span> Amortization</div>
+          <div class="stat-item"><span>✨</span> Poetic insights</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+
+  <script src="loanjs.js"></script>
+  <script src="transition.js"></script>
+  
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html" class="active">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

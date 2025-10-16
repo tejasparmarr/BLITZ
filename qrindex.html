@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QRNode — BLITZ Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="qrcss.css" />
+</head>
+<body>
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item active">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+    
+    <!-- Mobile Hamburger (unchanged) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>Create Stunning QR Codes</h1>
+      <p>Customize your QR codes with colors, shapes, logos, and download in multiple formats — all with smooth interactions.</p>
+    </div>
+  </header>
+
+  <main class="container route-content">
+    <div class="form-section">
+      <form id="qr-form" autocomplete="off" onsubmit="event.preventDefault();">
+        <div class="form-group">
+          <label for="text-input">Text or URL</label>
+          <input type="text" id="text-input" placeholder="Enter text or URL" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="size-input">Size</label>
+            <input type="range" id="size-input" min="100" max="500" value="200" />
+            <span id="size-display">200px</span>
+          </div>
+          <div class="form-group">
+            <label for="error-correction">Error Correction</label>
+            <select id="error-correction">
+              <option value="L">L (Low)</option>
+              <option value="M" selected>M</option>
+              <option value="Q">Q</option>
+              <option value="H">H (High)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fg-color">Foreground Color</label>
+            <input type="color" id="fg-color" value="#8b5cf6" />
+          </div>
+          <div class="form-group">
+            <label for="bg-color">Background Color</label>
+            <input type="color" id="bg-color" value="#f9fafb" />
+          </div>
+          <div class="form-group checkbox-group">
+            <label class="toggle fancy">
+              <input type="checkbox" id="transparent-bg" />
+              <span class="fancy-box" aria-hidden="true">
+                <span class="fancy-check">✓</span>
+              </span>
+              <span class="fancy-text">Transparent Background</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dot-style">Dot Style</label>
+            <select id="dot-style">
+              <option value="square">Square</option>
+              <option value="rounded">Rounded</option>
+              <option value="dots">Dots</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="eye-style">Eye Style</label>
+            <select id="eye-style">
+              <option value="square">Square</option>
+              <option value="circle">Circle</option>
+              <option value="diamond">Diamond</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="logo-upload">Logo (Center)</label>
+          <input type="file" id="logo-upload" accept="image/*" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="download-format">Download Format</label>
+            <select id="download-format">
+              <option value="png" selected>PNG</option>
+              <option value="jpg">JPG</option>
+              <option value="svg">SVG</option>
+              <option value="pdf">PDF</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button id="download-btn" type="button">Download QR Code</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="qr-preview-section">
+      <div class="qr-wrapper">
+        <div id="qrcode"></div>
+      </div>
+      <div class="stats">
+        <div class="stat-item"><span>∞</span> Styles</div>
+        <div class="stat-item"><span>4</span> Formats</div>
+        <div class="stat-item"><span>✓</span> Branding</div>
+        <div class="stat-item"><span>✔</span> Live Preview</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="qrjs.js"></script>
+  <script src="transition.js"></script>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html" class="active">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

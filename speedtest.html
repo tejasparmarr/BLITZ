@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Speed Test — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="speedtest.css"/>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item active" id="navSpeedTest">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+    
+    <!-- Mobile Hamburger (unchanged) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>Internet Speed Test</h1>
+      <p>Measure your download, upload speed, and ping latency with accurate server-side testing.</p>
+    </div>
+  </header>
+
+  <main class="shell route-content">
+    <section class="workbench">
+      <div class="left-col stretch">
+        <div class="card form-card fill">
+          <div class="card-head">
+            <h2>Test Controls</h2>
+            <div class="head-actions">
+              <span class="chip server">Server</span>
+              <span class="chip">Accurate</span>
+            </div>
+          </div>
+
+          <!-- Speedometer Display -->
+          <div class="group">
+            <div class="speedometer-container">
+              <svg viewBox="0 0 200 120" class="gauge-svg">
+                <!-- Background arc -->
+                <path d="M 20 100 A 80 80 0 0 1 180 100" 
+                      fill="none" 
+                      stroke="rgba(255,255,255,0.1)" 
+                      stroke-width="12" 
+                      stroke-linecap="round"/>
+                <!-- Colored arc -->
+                <path id="speedArc" 
+                      d="M 20 100 A 80 80 0 0 1 180 100" 
+                      fill="none" 
+                      stroke="url(#gradient)" 
+                      stroke-width="12" 
+                      stroke-linecap="round"
+                      stroke-dasharray="251"
+                      stroke-dashoffset="251"/>
+                <!-- Needle -->
+                <line id="needle" 
+                      x1="100" y1="100" 
+                      x2="100" y2="35" 
+                      stroke="#fff" 
+                      stroke-width="3" 
+                      stroke-linecap="round"
+                      style="transform-origin: 100px 100px; transform: rotate(-90deg);"/>
+                <!-- Center dot -->
+                <circle cx="100" cy="100" r="8" fill="#8b5cf6"/>
+                
+                <defs>
+                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              
+              <div class="speed-readout">
+                <div id="currentSpeed" class="speed-value">0.0</div>
+                <div class="speed-unit">Mbps</div>
+              </div>
+              <div id="testStatus" class="test-status">Ready to test your connection</div>
+            </div>
+          </div>
+
+          <!-- Test Button -->
+          <div class="group">
+            <button type="button" id="startTestBtn" class="btn primary full-width">
+              <span class="btn-icon">⚡</span>
+              Start Speed Test
+            </button>
+          </div>
+
+          <!-- Progress -->
+          <div class="progress">
+            <div id="progressBar" class="bar" style="width:0%"></div>
+          </div>
+
+          <!-- Info Bloc -->
+          <div class="group">
+            <div class="bloc subtle-bloc">
+              <div class="bloc-head"><h4>How It Works</h4></div>
+              <p class="note">
+                <strong>Download:</strong> Measures data arrival speed from server.<br>
+                <strong>Upload:</strong> Measures data sending speed to server.<br>
+                <strong>Ping:</strong> Measures server response time (latency).
+              </p>
+            </div>
+          </div>
+
+          <div class="actions stick-bottom">
+            <button type="button" id="clearHistoryBtn" class="btn">Clear History</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card result-card fill">
+        <div class="card-head">
+          <h3>Results</h3>
+          <span class="eye"></span>
+        </div>
+
+        <div class="status-wrap">
+          <div id="statusLine" class="status-line dim">Click "Start Speed Test" to begin.</div>
+
+          <!-- KPI Cards -->
+          <div class="stack">
+            <div class="kpi">
+              <div class="kpi-label">Download Speed</div>
+              <div id="downloadSpeed" class="kpi-num">—</div>
+              <div class="kpi-unit">Mbps</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Upload Speed</div>
+              <div id="uploadSpeed" class="kpi-num">—</div>
+              <div class="kpi-unit">Mbps</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-label">Ping Latency</div>
+              <div id="pingLatency" class="kpi-num">—</div>
+              <div class="kpi-unit">ms</div>
+            </div>
+          </div>
+
+          <!-- Test History -->
+          <div class="stack mt-1">
+            <div class="bloc">
+              <div class="bloc-head">
+                <h4>Test History</h4>
+              </div>
+              <div id="testHistory" class="test-history">
+                <p class="empty-state">No tests yet. Start a test to see results here.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection Quality -->
+          <div class="stack mt-1">
+            <div id="qualityBloc" class="bloc hidden">
+              <div class="bloc-head">
+                <h4>Connection Quality</h4>
+                <span id="qualityBadge" class="chip"></span>
+              </div>
+              <p id="qualityDescription" class="note"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+  <!-- Global drop overlay -->
+  <div id="globalDrop" class="global-drop" aria-hidden="true">
+    <div class="gd-panel">
+      <div class="gd-ico">⚡</div>
+      <div class="gd-text">Speed Test Ready</div>
+    </div>
+  </div>
+
+  <script src="speedtest.js"></script>
+  <script src="transition.js"></script>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html" class="active">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

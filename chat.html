@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BLITZ AI Assistant — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="chatbot.css"/>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item active">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+    
+    <!-- Mobile Hamburger (unchanged) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>BLITZ AI Assistant</h1>
+      <p>Powered by Google Gemini 2.5 Flash — Ask me anything!</p>
+    </div>
+  </header>
+
+  <main class="shell route-content">
+    <div class="chat-container">
+      <!-- Main Chat Card -->
+      <div class="card chat-card">
+        <!-- Header with actions -->
+        <div class="chat-header">
+          <div class="chat-header-left">
+            <div class="ai-avatar">🤖</div>
+            <div class="chat-title">
+              <h2>BLITZ AI</h2>
+              <div class="chat-subtitle">
+                <span class="chip server">Gemini 2.5</span>
+                <span id="statusIndicator" class="status-indicator">●</span>
+                <span id="statusText" class="status-text">Ready</span>
+              </div>
+            </div>
+          </div>
+          <div class="chat-header-right">
+            <button id="clearChatBtn" class="icon-btn" title="Clear conversation">
+              <span>🗑️</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Messages Area -->
+        <div id="chatMessages" class="chat-messages">
+          <div class="welcome-message">
+            <div class="welcome-icon">🤖</div>
+            <h3>Welcome to BLITZ AI Assistant!</h3>
+            <p>I'm powered by Google Gemini 2.5 Flash. I can help you with:</p>
+            <div class="capability-grid">
+              <div class="capability-item">💡 Answering questions</div>
+              <div class="capability-item">📝 Writing & editing</div>
+              <div class="capability-item">💻 Coding assistance</div>
+              <div class="capability-item">🧮 Math & calculations</div>
+              <div class="capability-item">🌍 General knowledge</div>
+              <div class="capability-item">🎨 Creative tasks</div>
+            </div>
+            <p class="welcome-cta">Try the suggested prompts below or type your own question!</p>
+          </div>
+        </div>
+
+        <!-- Typing Indicator -->
+        <div id="typingIndicator" class="typing-indicator hidden">
+          <div class="message ai-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-bubble">
+              <div class="typing-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggested Prompts (shown at bottom when chat is empty) -->
+        <div id="suggestedPrompts" class="suggested-prompts">
+          <div class="prompts-label">💡 Suggested prompts:</div>
+          <div class="prompts-grid">
+            <button class="prompt-chip" data-prompt="Explain quantum computing in simple terms">
+              Explain quantum computing
+            </button>
+            <button class="prompt-chip" data-prompt="Write a professional email for a job application">
+              Write professional email
+            </button>
+            <button class="prompt-chip" data-prompt="Help me debug this JavaScript code">
+              Debug JavaScript
+            </button>
+            <button class="prompt-chip" data-prompt="What are the benefits of regular exercise?">
+              Benefits of exercise
+            </button>
+            <button class="prompt-chip" data-prompt="Explain blockchain technology">
+              Explain blockchain
+            </button>
+            <button class="prompt-chip" data-prompt="Give me 5 productivity tips">
+              Productivity tips
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="chat-input-container">
+          <textarea 
+            id="chatInput" 
+            class="chat-input" 
+            placeholder="Type your message... (Press Enter to send, Shift+Enter for new line)"
+            rows="1"
+          ></textarea>
+          <button id="sendBtn" class="send-btn" title="Send message">
+            <span class="send-icon">➤</span>
+          </button>
+        </div>
+
+        <!-- Stats Bar (bottom) -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <span class="stat-label">Messages:</span>
+            <span id="messageCount" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Turns:</span>
+            <span id="conversationLength" class="stat-value">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Model:</span>
+            <span class="stat-value">Gemini 2.5 Flash</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+  <div id="globalDrop" class="global-drop" aria-hidden="true">
+    <div class="gd-panel">
+      <div class="gd-ico">🤖</div>
+      <div class="gd-text">AI Assistant</div>
+    </div>
+  </div>
+
+  <script src="chatbot.js"></script>
+  <script src="transition.js"></script>
+
+  <!-- Mobile Drawer (UNCHANGED) -->
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html" class="active">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

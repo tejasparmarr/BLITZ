@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PDF → Word — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="pdftoword.css"/>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    <ul class="nav-links">
+      <li><a href="qrindex.html">QRNode</a></li>
+      <li><a href="timeindex.html">Time</a></li>
+      <li><a href="converterindex.html">Converter</a></li>
+      <li><a href="forge.html">FORGE</a></li>
+      <li><a href="attempthtml.html">Eligibility</a></li>
+      <li><a href="healthhtml.html">Health</a></li>
+      <li><a href="loanhtml.html">Loan</a></li>
+      <li><a href="filehtml.html" id="navFilePdf">File & PDF</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>PDF to Word</h1>
+      <p>Convert PDFs into editable DOCX with sane defaults and privacy-first handling.</p>
+    </div>
+  </header>
+
+  <main class="shell route-content">
+    <section class="workbench">
+      <div class="left-col stretch">
+        <div class="card form-card fill">
+          <div class="card-head">
+            <h2>Inputs</h2>
+            <div class="head-actions">
+              <span class="chip server">Server</span>
+              <span class="chip cap">20 MB max</span>
+            </div>
+          </div>
+
+          <div class="group">
+            <label for="fileInput">Upload PDF</label>
+            <div id="dropzone" class="dropzone" tabindex="0" aria-label="Drop PDF file here or use the uploader">
+              <div class="dz-inner">
+                <div class="dz-ico">📄</div>
+                <div class="dz-text">
+                  <strong>Drag & drop</strong> a PDF, or
+                  <button type="button" class="link-btn" id="browseBtn">browse</button>
+                </div>
+                <div class="dz-sub">Accepted: .pdf • Up to 20 MB</div>
+              </div>
+              <input id="fileInput" type="file" accept="application/pdf" hidden />
+            </div>
+            <p id="fileNote" class="note">No storage, no logging—processed via short-lived links once backend is wired.</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="pageRange">Page Range (optional)</label>
+              <input id="pageRange" type="text" placeholder="all or e.g., 1-3,7" />
+              <p class="whisper">Ranges help speed and cost by converting only what’s needed.</p>
+            </div>
+            <div class="group">
+              <label for="layoutMode">Layout Fidelity</label>
+              <select id="layoutMode">
+                <option value="balanced" selected>Balanced (default)</option>
+                <option value="text-priority">Text priority</option>
+                <option value="layout-priority">Layout priority</option>
+              </select>
+              <p class="whisper">Complex layouts or custom fonts may need layout priority.</p>
+            </div>
+            <div class="group">
+              <label for="ocrToggle">OCR</label>
+              <select id="ocrToggle">
+                <option value="auto" selected>Auto</option>
+                <option value="on">Force ON</option>
+                <option value="off">Force OFF</option>
+              </select>
+              <p class="whisper">Auto attempts OCR for scanned PDFs in backend mode.</p>
+            </div>
+          </div>
+
+          <details class="addon collapsible">
+            <summary>Advanced Options</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="dpi">Raster DPI (images)</label>
+                  <input id="dpi" type="number" min="72" max="300" step="1" placeholder="e.g., 150" />
+                </div>
+                <div class="group">
+                  <label for="lang">OCR Language</label>
+                  <input id="lang" type="text" placeholder="e.g., eng, hin" />
+                </div>
+                <div class="group">
+                  <label for="timeout">Timeout (s)</label>
+                  <input id="timeout" type="number" min="5" max="120" step="5" placeholder="default 60" />
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="group">
+                  <label for="fontEmbed">Fonts</label>
+                  <select id="fontEmbed">
+                    <option value="auto" selected>Auto (embed common)</option>
+                    <option value="minimal">Minimal embedding</option>
+                    <option value="none">No embed (fallback)</option>
+                  </select>
+                  <p class="whisper">Embedding improves fidelity; may increase size.</p>
+                </div>
+                <div class="group">
+                  <label for="fontFallback">Fallback Font</label>
+                  <select id="fontFallback">
+                    <option value="inter" selected>Inter</option>
+                    <option value="arial">Arial</option>
+                    <option value="noto">Noto Sans</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="flattenVectors">Flatten Vectors</label>
+                  <select id="flattenVectors">
+                    <option value="off" selected>Off</option>
+                    <option value="on">On (reduce glitches)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="group">
+                  <label for="imagePolicy">Images</label>
+                  <select id="imagePolicy">
+                    <option value="keep" selected>Keep original</option>
+                    <option value="downscale">Downscale</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="imageMax">Max Dimension (px)</label>
+                  <input id="imageMax" type="number" min="600" max="3000" step="100" placeholder="e.g., 1600" />
+                </div>
+                <div class="group">
+                  <label for="normalizeSize">Normalize Page Size</label>
+                  <select id="normalizeSize">
+                    <option value="off" selected>Off</option>
+                    <option value="a4">A4</option>
+                    <option value="letter">Letter</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="group">
+                  <label for="hdrFtr">Headers/Footers</label>
+                  <select id="hdrFtr">
+                    <option value="auto" selected>Auto detect</option>
+                    <option value="off">Off</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="keepVectors">Preserve Vector Text</label>
+                  <select id="keepVectors">
+                    <option value="auto" selected>Auto</option>
+                    <option value="off">Force text</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="langHint">Language Hint</label>
+                  <input id="langHint" type="text" placeholder="layout locale (e.g., en-IN)" />
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <div class="actions stick-bottom">
+            <button type="button" id="convertBtn" class="btn primary" disabled>Convert</button>
+            <button type="button" id="resetBtn" class="btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card result-card fill">
+        <div class="card-head">
+          <h3>Status</h3>
+          <span class="eye"></span>
+        </div>
+
+        <div class="status-wrap">
+          <div id="statusLine" class="status-line dim">Select a PDF to begin.</div>
+          <div class="progress">
+            <div id="progressBar" class="bar" style="width:0%"></div>
+          </div>
+
+          <div class="stack">
+            <div class="kpi">
+              <div id="kFileName" class="kpi-num">—</div>
+              <div class="kpi-label">File</div>
+            </div>
+            <div class="kpi">
+              <div id="kFileSize" class="kpi-num">—</div>
+              <div class="kpi-label">Size</div>
+            </div>
+            <div class="kpi">
+              <div id="kPages" class="kpi-num">—</div>
+              <div class="kpi-label">Pages (est.)</div>
+            </div>
+          </div>
+
+          <div class="stack mt-1">
+            <div id="advice" class="bloc subtle-bloc">
+              <div class="bloc-head"><h4>Guidance</h4></div>
+              <p class="note">Keep under 20 MB; use ranges; “Layout priority” for complex forms; OCR “Auto” for scans; images can be downscaled to reduce size.</p>
+            </div>
+
+            <div id="downloadBloc" class="bloc hidden">
+              <div class="bloc-head">
+                <h4>Output</h4>
+                <span class="chip subtle">DOCX</span>
+              </div>
+              <a id="downloadLink" class="quick-link" href="#" download>Download DOCX</a>
+              <p class="note">This will activate once backend wiring is complete.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+  <!-- Global drop overlay -->
+  <div id="globalDrop" class="global-drop" aria-hidden="true">
+    <div class="gd-panel">
+      <div class="gd-ico">⬇️</div>
+      <div class="gd-text">Drop your PDF anywhere</div>
+    </div>
+  </div>
+
+  <script src="pdftoword.js"></script>
+  <script src="transition.js"></script>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html" class="active" id="drawerFilePdf">File & PDF</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

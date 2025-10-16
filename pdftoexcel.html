@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>PDF → Excel — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="pdftoexcel.css"/>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    <ul class="nav-links">
+      <li><a href="qrindex.html">QRNode</a></li>
+      <li><a href="timeindex.html">Time</a></li>
+      <li><a href="converterindex.html">Converter</a></li>
+      <li><a href="forge.html">FORGE</a></li>
+      <li><a href="attempthtml.html">Eligibility</a></li>
+      <li><a href="healthhtml.html">Health</a></li>
+      <li><a href="loanhtml.html">Loan</a></li>
+      <li><a href="filehtml.html" id="navFilePdf">File & PDF</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>PDF to Excel</h1>
+      <p>Extract tabular data into XLSX with smart detection and privacy-first processing.</p>
+    </div>
+  </header>
+
+  <main class="shell route-content">
+    <section class="workbench">
+      <div class="left-col stretch">
+        <div class="card form-card fill">
+          <div class="card-head">
+            <h2>Inputs</h2>
+            <div class="head-actions">
+              <span class="chip server">Server</span>
+              <span class="chip cap">20 MB max</span>
+            </div>
+          </div>
+
+          <div class="group">
+            <label for="fileInput">Upload PDF</label>
+            <div id="dropzone" class="dropzone" tabindex="0" aria-label="Drop PDF file here or use the uploader">
+              <div class="dz-inner">
+                <div class="dz-ico">📄</div>
+                <div class="dz-text">
+                  <strong>Drag & drop</strong> a PDF, or
+                  <button type="button" class="link-btn" id="browseBtn">browse</button>
+                </div>
+                <div class="dz-sub">Accepted: .pdf • Up to 20 MB</div>
+              </div>
+              <input id="fileInput" type="file" accept="application/pdf" hidden />
+            </div>
+            <p id="fileNote" class="note">No storage, no logging—processed via short-lived links once backend is wired.</p>
+          </div>
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="pageRange">Page Range (optional)</label>
+              <input id="pageRange" type="text" placeholder="all or e.g., 1-3,7"/>
+              <p class="whisper">Convert only needed pages to keep results fast and small.</p>
+            </div>
+            <div class="group">
+              <label for="detectMode">Table Detection</label>
+              <select id="detectMode">
+                <option value="auto" selected>Auto (lines + spacing)</option>
+                <option value="lines">Ruling lines</option>
+                <option value="lattice">Lattice (strong grid)</option>
+                <option value="stream">Stream (no visible grid)</option>
+              </select>
+              <p class="whisper">Pick “Stream” for invoices or text-aligned tables.</p>
+            </div>
+            <div class="group">
+              <label for="mergeSheets">Sheet Strategy</label>
+              <select id="mergeSheets">
+                <option value="per-page" selected>One sheet per page</option>
+                <option value="single">Merge all pages</option>
+              </select>
+              <p class="whisper">Choose “single” for continuous tables across pages.</p>
+            </div>
+          </div>
+
+          <details class="addon collapsible">
+            <summary>Advanced Options</summary>
+            <div class="anim-wrap">
+              <div class="grid-3">
+                <div class="group">
+                  <label for="headerRows">Header Rows</label>
+                  <input id="headerRows" type="number" min="0" max="10" step="1" placeholder="e.g., 1"/>
+                </div>
+                <div class="group">
+                  <label for="footerRows">Footer Rows</label>
+                  <input id="footerRows" type="number" min="0" max="10" step="1" placeholder="e.g., 0"/>
+                </div>
+                <div class="group">
+                  <label for="splitCols">Split Columns</label>
+                  <select id="splitCols">
+                    <option value="auto" selected>Auto</option>
+                    <option value="strict">Strict (no merges)</option>
+                    <option value="loose">Loose (allow merges)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="group">
+                  <label for="numericLocale">Numeric Locale</label>
+                  <select id="numericLocale">
+                    <option value="auto" selected>Auto</option>
+                    <option value="en-IN">en-IN</option>
+                    <option value="en-US">en-US</option>
+                    <option value="de-DE">de-DE</option>
+                  </select>
+                  <p class="whisper">Controls decimal/comma parsing during cleanup.</p>
+                </div>
+                <div class="group">
+                  <label for="keepFormatting">Keep Formatting</label>
+                  <select id="keepFormatting">
+                    <option value="minimal" selected>Minimal (clean)</option>
+                    <option value="preserve">Preserve styles</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="timeout">Timeout (s)</label>
+                  <input id="timeout" type="number" min="5" max="120" step="5" placeholder="default 60"/>
+                </div>
+              </div>
+
+              <div class="grid-3">
+                <div class="group">
+                  <label for="cellsAsText">Cells as Text</label>
+                  <select id="cellsAsText">
+                    <option value="auto" selected>Auto</option>
+                    <option value="force">Force strings</option>
+                    <option value="infer">Infer numbers/dates</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="trimWhitespace">Trim Whitespace</label>
+                  <select id="trimWhitespace">
+                    <option value="on" selected>On</option>
+                    <option value="off">Off</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="removeDuplicates">Remove Duplicate Rows</label>
+                  <select id="removeDuplicates">
+                    <option value="off" selected>Off</option>
+                    <option value="on">On</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <div class="actions stick-bottom">
+            <button type="button" id="convertBtn" class="btn primary" disabled>Convert</button>
+            <button type="button" id="resetBtn" class="btn">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card result-card fill">
+        <div class="card-head">
+          <h3>Status</h3>
+          <span class="eye"></span>
+        </div>
+
+        <div class="status-wrap">
+          <div id="statusLine" class="status-line dim">Select a PDF to begin.</div>
+          <div class="progress">
+            <div id="progressBar" class="bar" style="width:0%"></div>
+          </div>
+
+        <div class="stack">
+          <div class="kpi">
+            <div id="kFileName" class="kpi-num">—</div>
+            <div class="kpi-label">File</div>
+          </div>
+          <div class="kpi">
+            <div id="kFileSize" class="kpi-num">—</div>
+            <div class="kpi-label">Size</div>
+          </div>
+          <div class="kpi">
+            <div id="kPages" class="kpi-num">—</div>
+            <div class="kpi-label">Pages (est.)</div>
+          </div>
+        </div>
+
+        <div class="stack mt-1">
+          <div id="advice" class="bloc subtle-bloc">
+            <div class="bloc-head"><h4>Guidance</h4></div>
+            <p class="note">Use “Stream” for text-aligned tables without lines; set header rows to lock column names; choose “single” to merge multi-page tables.</p>
+          </div>
+
+          <div id="downloadBloc" class="bloc hidden">
+            <div class="bloc-head">
+              <h4>Output</h4>
+              <span class="chip subtle">XLSX</span>
+            </div>
+            <a id="downloadLink" class="quick-link" href="#" download>Download XLSX</a>
+            <p class="note">This will activate once backend wiring is complete.</p>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+  <!-- Global drop overlay -->
+  <div id="globalDrop" class="global-drop" aria-hidden="true">
+    <div class="gd-panel">
+      <div class="gd-ico">⬇️</div>
+      <div class="gd-text">Drop your PDF anywhere</div>
+    </div>
+  </div>
+
+  <script src="pdftoexcel.js"></script>
+  <script src="transition.js"></script>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html" class="active" id="drawerFilePdf">File & PDF</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

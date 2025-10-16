@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FORGE — BLITZ Tools</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;900&family=Inter:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+ 
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item active">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+
+    
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+  
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>Generate. Test. Stay secure.</h1>
+      <p>Generate and evaluate strong passwords with live criteria, progress, and quick copy — all with smooth interactions.</p>
+    </div>
+  </header>
+
+  
+  <main class="container route-content">
+    
+    <section class="form-section">
+      <div class="title-wrapper">
+        <img src="TEJAS.jpg" alt="Creator's Photo" class="avatar" />
+        <h2>KEY FORGE</h2>
+      </div>
+
+      <div class="input-wrapper">
+        <input type="password" id="password" placeholder="🔐 Enter your password" />
+        <span id="toggle-password" class="toggle-icon" title="Show/Hide Password" style="width:24px; height:24px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#a3c4f3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            ircle cx="12" cy="12"2" r="3"/>
+          </svg>
+        </span>
+      </div>
+
+      <div id="strength-message">Strength: —</div>
+
+      <div class="strength-bar">
+        <div id="strength-progress"></div>
+      </div>
+
+      <div class="strength-details">
+        <ul>
+          <li id="length-criteria" class="criteria">• Minimum 8 characters</li>
+          <li id="uppercase-criteria" class="criteria">• Includes uppercase letter (A-Z)</li>
+          <li id="lowercase-criteria" class="criteria">• Includes lowercase letter (a-z)</li>
+          <li id="number-criteria" class="criteria">• Includes number (0-9)</li>
+          <li id="special-criteria" class="criteria">• Includes special character (!@#$%^&*)</li>
+        </ul>
+      </div>
+
+      <button id="generate-btn">✨ Generate Password</button>
+
+      <div class="options">
+        <label class="switch">
+          <input type="checkbox" id="include-letters" checked />
+          <span class="slider"></span>
+          Letters (a-z, A-Z)
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="include-numbers" checked />
+          <span class="slider"></span>
+          Numbers (0-9)
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="include-special" checked />
+          <span class="slider"></span>
+          Special Characters (!@#$%^&*)
+        </label>
+      </div>
+
+      <div class="input-wrapper generated-wrapper">
+        <input type="text" id="generated-password" readonly placeholder="Your generated password" />
+        <span id="copy-btn" class="toggle-icon" title="Copy to Clipboard">📋</span>
+      </div>
+    </section>
+
+    
+    <section class="qr-preview-section result-card">
+      <div class="qr-wrapper result-wrap">
+        <div class="result-value" id="forgePreviewTitle">Live Preview</div>
+        <div class="result-sub" id="forgePreviewSub">Strength and criteria update as typing happens</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item"><span>✓</span> Criteria</div>
+        <div class="stat-item"><span>∞</span> Variants</div>
+        <div class="stat-item"><span>⚡</span> Quick copy</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="transition.js"></script>
+
+  
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html" class="active">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+
+  
+  <script src="nav.js"></script>
+</body>
+</html>

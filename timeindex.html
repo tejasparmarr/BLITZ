@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Time Calculator — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="timecss.css" />
+</head>
+<body>
+ 
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item active">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+    </ul>
+    
+    <!-- Mobile Hamburger (unchanged) -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>From then to now, every second accounted</h1>
+      <p>Pick two dates and get precise differences in years, months, days, and hours — with a clean, preview.</p>
+    </div>
+  </header>
+
+
+  <main class="shell route-content">
+    <section class="workbench">
+      <div class="left-col">
+        <div class="card date-card" id="date1Section">
+          <div class="card-head">
+            <h2>Date 1</h2>
+            <div class="head-actions">
+              <button type="button" class="btn tiny" id="now1Btn">Now</button>
+            </div>
+          </div>
+
+
+          <div class="grid-2">
+            <div class="group">
+              <label for="day1">Day</label>
+              <select id="day1"></select>
+            </div>
+            <div class="group">
+              <label for="month1">Month</label>
+              <select id="month1"></select>
+            </div>
+          </div>
+
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="year1">Year</label>
+              <select id="year1"></select>
+            </div>
+            <div class="group">
+              <label for="hour1">Hour</label>
+              <select id="hour1"></select>
+            </div>
+            <div class="group">
+              <label for="minute1">Minute</label>
+              <select id="minute1"></select>
+            </div>
+          </div>
+
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="second1">Second</label>
+              <select id="second1"></select>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="card date-card" id="date2Section">
+          <div class="card-head">
+            <h2>Date 2</h2>
+            <div class="head-actions">
+              <button type="button" class="btn tiny" id="now2Btn">Now</button>
+            </div>
+          </div>
+
+
+          <div class="grid-2">
+            <div class="group">
+              <label for="day2">Day</label>
+              <select id="day2"></select>
+            </div>
+            <div class="group">
+              <label for="month2">Month</label>
+              <select id="month2"></select>
+            </div>
+          </div>
+
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="year2">Year</label>
+              <select id="year2"></select>
+            </div>
+            <div class="group">
+              <label for="hour2">Hour</label>
+              <select id="hour2"></select>
+            </div>
+            <div class="group">
+              <label for="minute2">Minute</label>
+              <select id="minute2"></select>
+            </div>
+          </div>
+
+
+          <div class="grid-3">
+            <div class="group">
+              <label for="second2">Second</label>
+              <select id="second2"></select>
+            </div>
+          </div>
+
+
+          <div class="actions">
+            <button id="calculateBtn" type="button" class="btn primary">Calculate</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card result-card">
+        <div class="card-head">
+          <h3>Preview</h3>
+          <span class="eye"></span>
+        </div>
+
+
+        <output id="result" role="region" aria-live="polite" class="result-wrap">—</output>
+
+
+        <div class="stats">
+          <div class="stat-item"><span>✓</span> Validates dates</div>
+          <div class="stat-item"><span>∞</span> Range</div>
+          <div class="stat-item"><span>24h</span> Clock</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+
+  <script src="timejs.js"></script>
+  <script src="transition.js"></script>
+ 
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html" class="active">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>

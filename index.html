@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>BLITZ — Power Tools for Everyone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="blitzcss.css"/>
+</head>
+<body>
+
+  <!-- Cursor Trail Effect -->
+  <canvas id="cursorCanvas"></canvas>
+
+  <!-- HEADER -->
+  <header class="header route-content">
+    <div class="container header-content">
+      <a class="logo" href="#">BLITZ</a>
+
+      <nav class="nav">
+        <ul>
+          <li><a href="#tools" class="nav-link">All Tools</a></li>
+          <li><a href="#premium" class="nav-link">Premium</a></li>
+          <li><a href="#why" class="nav-link">Why BLITZ</a></li>
+          <li><a href="#community" class="nav-link">Community</a></li>
+        </ul>
+      </nav>
+
+      <div class="user-badge">
+        <img src="TEJAS.jpg" alt="Tejas Parmar"/>
+        <div class="status-dot"></div>
+      </div>
+
+      <a href="#premium" class="btn btn-header">Get Started</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION - CINEMATIC -->
+  <section class="hero-ultimate route-content">
+    <div class="particles-container" id="particles"></div>
+    <div class="spotlight" id="spotlight"></div>
+    
+    <div class="hero-aurora"></div>
+    
+    <div class="container hero-ultimate-content">
+      <div class="hero-badge">✨ 12 Premium Tools</div>
+      <h1 class="hero-title">
+        All the tools you need,<br>
+        <span class="gradient-flow">in one place.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Simplify your workflow with intuitive, powerful, and lightning-fast utilities built for everyone—from beginners to pros.
+      </p>
+      
+      <div class="hero-cta-group">
+        <a href="#premium" class="btn btn-hero-primary magnetic">
+          <span>Explore Premium Tools</span>
+        </a>
+        <a href="#tools" class="btn btn-hero-secondary magnetic">
+          <span>View All Tools</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Powerful Tools</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">5</div>
+          <div class="stat-label">Premium Features</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Free Forever</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Tool Icons -->
+    <div class="floating-icons">
+      <div class="float-icon" style="--delay: 0s; --x: 10%; --y: 20%;">📄</div>
+      <div class="float-icon" style="--delay: 0.5s; --x: 85%; --y: 15%;">🖼️</div>
+      <div class="float-icon" style="--delay: 1s; --x: 15%; --y: 75%;">⚡</div>
+      <div class="float-icon" style="--delay: 1.5s; --x: 80%; --y: 70%;">🤖</div>
+      <div class="float-icon" style="--delay: 2s; --x: 50%; --y: 85%;">🚗</div>
+    </div>
+  </section>
+
+  <!-- BENTO GRID - ALL TOOLS AT YOUR FINGERTIPS -->
+  <section id="tools" class="bento-section route-content">
+    <div class="container">
+      <div class="section-header-ultimate">
+        <span class="section-tag">Quick Access</span>
+        <h2 class="section-title gradient-flow">All Tools at Your Fingertips</h2>
+        <p class="section-subtitle">Jump straight to any tool with a single click</p>
+      </div>
+
+      <div class="bento-grid">
+        <!-- Premium Tools - Larger Cards -->
+        <a href="filehtml.html" class="bento-card bento-large tool-premium">
+          <div class="bento-icon">📄</div>
+          <h3>File & PDF Tools</h3>
+          <p>Convert, merge, split PDFs</p>
+          <span class="bento-badge">Premium</span>
+        </a>
+
+        <a href="remove-background.html" class="bento-card bento-large tool-premium">
+          <div class="bento-icon">🖼️</div>
+          <h3>Background Remover</h3>
+          <p>AI-powered instant removal</p>
+          <span class="bento-badge">Premium</span>
+        </a>
+
+        <a href="speedtest.html" class="bento-card tool-utility">
+          <div class="bento-icon">⚡</div>
+          <h3>Speed Test</h3>
+          <p>Network analysis</p>
+        </a>
+
+        <a href="velocity.html" class="bento-card tool-utility">
+          <div class="bento-icon">🚗</div>
+          <h3>Velocity Tracker</h3>
+          <p>GPS tracking</p>
+        </a>
+
+        <a href="chat.html" class="bento-card bento-tall tool-premium">
+          <div class="bento-icon">🤖</div>
+          <h3>AI Assistant</h3>
+          <p>Intelligent conversations</p>
+          <span class="bento-badge">Premium</span>
+        </a>
+
+        <a href="qrindex.html" class="bento-card tool-core">
+          <div class="bento-icon">🔮</div>
+          <h3>QRNode</h3>
+          <p>QR generator</p>
+        </a>
+
+        <a href="timeindex.html" class="bento-card tool-core">
+          <div class="bento-icon">🕐</div>
+          <h3>Time Calc</h3>
+          <p>Date & duration</p>
+        </a>
+
+        <a href="converterindex.html" class="bento-card tool-core">
+          <div class="bento-icon">🔄</div>
+          <h3>Converter</h3>
+          <p>Unit conversion</p>
+        </a>
+
+        <a href="forge.html" class="bento-card tool-core">
+          <div class="bento-icon">🎨</div>
+          <h3>Key Forge</h3>
+          <p>Password gen</p>
+        </a>
+
+        <a href="attempthtml.html" class="bento-card tool-calculator">
+          <div class="bento-icon">📊</div>
+          <h3>Eligibility</h3>
+          <p>Exam checker</p>
+        </a>
+
+        <a href="healthhtml.html" class="bento-card tool-calculator">
+          <div class="bento-icon">💪</div>
+          <h3>Health</h3>
+          <p>BMI & BMR</p>
+        </a>
+
+        <a href="loanhtml.html" class="bento-card tool-calculator">
+          <div class="bento-icon">💰</div>
+          <h3>Loan & EMI</h3>
+          <p>EMI calculator</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMIUM SHOWCASE - PROFESSIONAL GRADE TOOLS -->
+  <section id="premium" class="premium-showcase route-content">
+    <div class="container">
+      <div class="section-header-ultimate">
+        <span class="section-tag">Premium Collection</span>
+        <h2 class="section-title gradient-flow">Professional-Grade Tools</h2>
+        <p class="section-subtitle">Unlock powerful features designed for modern workflows</p>
+      </div>
+
+      <!-- Premium Tool 1: File & PDF -->
+      <div class="premium-hero-card holographic">
+        <div class="card-aurora"></div>
+        <div class="card-content-split">
+          <div class="card-info">
+            <div class="card-category">Premium • File Management</div>
+            <h3>File & PDF Tools</h3>
+            <p class="card-lead">Complete document management suite</p>
+            <p class="card-description">Transform, merge, split, and compress PDFs with professional-grade quality. Convert between formats, extract text and images, add watermarks—all in your browser with zero installation required.</p>
+            
+            <ul class="feature-checklist">
+              <li><span class="check-icon">✓</span> PDF to Word, Excel, Image conversion</li>
+              <li><span class="check-icon">✓</span> Merge, split & compress instantly</li>
+              <li><span class="check-icon">✓</span> Batch processing for multiple files</li>
+              <li><span class="check-icon">✓</span> Secure client-side processing</li>
+            </ul>
+
+            <a href="filehtml.html" class="btn btn-premium magnetic">
+              <span>Launch Tool</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+
+          <div class="card-visual">
+            <div class="visual-mockup">
+              <div class="mockup-window">
+                <div class="window-header">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="window-title">File & PDF Tools</div>
+                </div>
+                <div class="window-content">
+                  <div class="file-icon-display">📄</div>
+                  <p class="mockup-text">Drag & drop your files</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Tool 2: Background Remover -->
+      <div class="premium-hero-card holographic reverse">
+        <div class="card-aurora cyan"></div>
+        <div class="card-content-split">
+          <div class="card-visual">
+            <div class="visual-mockup">
+              <div class="mockup-window">
+                <div class="window-header">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="window-title">Background Remover</div>
+                </div>
+                <div class="window-content">
+                  <div class="file-icon-display">🖼️</div>
+                  <p class="mockup-text">AI-powered precision</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-info">
+            <div class="card-category">Premium • Image Processing</div>
+            <h3>Background Remover</h3>
+            <p class="card-lead">AI magic for perfect cutouts</p>
+            <p class="card-description">Remove backgrounds from any image instantly using advanced AI technology. Perfect for product photos, profile pictures, and creative projects. Get professional results without design skills.</p>
+            
+            <ul class="feature-checklist">
+              <li><span class="check-icon">✓</span> AI-powered instant processing</li>
+              <li><span class="check-icon">✓</span> High-quality edge detection</li>
+              <li><span class="check-icon">✓</span> Supports PNG, JPG, WebP</li>
+              <li><span class="check-icon">✓</span> Preview before download</li>
+            </ul>
+
+            <a href="remove-background.html" class="btn btn-premium magnetic">
+              <span>Launch Tool</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Tool 3: Speed Test -->
+      <div class="premium-hero-card holographic">
+        <div class="card-aurora pink"></div>
+        <div class="card-content-split">
+          <div class="card-info">
+            <div class="card-category">Premium • Network Analysis</div>
+            <h3>Internet Speed Test</h3>
+            <p class="card-lead">Real-time performance insights</p>
+            <p class="card-description">Measure your internet speed with pinpoint accuracy. Get detailed metrics on download, upload, ping, and jitter. Track performance over time and troubleshoot connectivity issues instantly.</p>
+            
+            <ul class="feature-checklist">
+              <li><span class="check-icon">✓</span> Download & upload speed testing</li>
+              <li><span class="check-icon">✓</span> Ping and latency measurement</li>
+              <li><span class="check-icon">✓</span> Real-time visual feedback</li>
+              <li><span class="check-icon">✓</span> Historical tracking</li>
+            </ul>
+
+            <a href="speedtest.html" class="btn btn-premium magnetic">
+              <span>Launch Tool</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+
+          <div class="card-visual">
+            <div class="visual-mockup">
+              <div class="mockup-window">
+                <div class="window-header">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="window-title">Speed Test</div>
+                </div>
+                <div class="window-content">
+                  <div class="file-icon-display">⚡</div>
+                  <p class="mockup-text">Testing speed...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Tool 4: Velocity Tracker -->
+      <div class="premium-hero-card holographic reverse">
+        <div class="card-aurora green"></div>
+        <div class="card-content-split">
+          <div class="card-visual">
+            <div class="visual-mockup">
+              <div class="mockup-window">
+                <div class="window-header">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="window-title">Velocity Tracker</div>
+                </div>
+                <div class="window-content">
+                  <div class="file-icon-display">🚗</div>
+                  <p class="mockup-text">Live tracking active</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-info">
+            <div class="card-category">Premium • GPS Tracking</div>
+            <h3>Velocity Tracker</h3>
+            <p class="card-lead">GPS-powered speed and distance tracking</p>
+            <p class="card-description">Track your movement in real-time with GPS precision. Monitor speed, distance, elevation, and route history. Perfect for runners, cyclists, drivers, and outdoor enthusiasts who want detailed performance metrics.</p>
+            
+            <ul class="feature-checklist">
+              <li><span class="check-icon">✓</span> Real-time GPS speed tracking</li>
+              <li><span class="check-icon">✓</span> Distance and elevation logging</li>
+              <li><span class="check-icon">✓</span> Route visualization on maps</li>
+              <li><span class="check-icon">✓</span> Export trip data</li>
+            </ul>
+
+            <a href="velocity.html" class="btn btn-premium magnetic">
+              <span>Launch Tool</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Premium Tool 5: AI Assistant -->
+      <div class="premium-hero-card holographic">
+        <div class="card-aurora blue"></div>
+        <div class="card-content-split">
+          <div class="card-info">
+            <div class="card-category">Premium • Artificial Intelligence</div>
+            <h3>AI Assistant</h3>
+            <p class="card-lead">Your intelligent conversational helper</p>
+            <p class="card-description">Get instant answers, creative ideas, and helpful solutions powered by advanced AI. From writing assistance to problem-solving, code help to general knowledge—your personal AI is always ready to assist.</p>
+            
+            <ul class="feature-checklist">
+              <li><span class="check-icon">✓</span> Natural language conversations</li>
+              <li><span class="check-icon">✓</span> Context-aware responses</li>
+              <li><span class="check-icon">✓</span> Code generation and debugging</li>
+              <li><span class="check-icon">✓</span> Creative writing assistance</li>
+            </ul>
+
+            <a href="chat.html" class="btn btn-premium magnetic">
+              <span>Launch Tool</span>
+              <span class="btn-arrow">→</span>
+            </a>
+          </div>
+
+          <div class="card-visual">
+            <div class="visual-mockup">
+              <div class="mockup-window">
+                <div class="window-header">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="window-title">AI Assistant</div>
+                </div>
+                <div class="window-content">
+                  <div class="file-icon-display">🤖</div>
+                  <p class="mockup-text">How can I help?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE TOOLS - DESIGNER PLATES -->
+  <section class="core-tools-designer route-content">
+    <div class="container">
+      <div class="section-header-ultimate">
+        <span class="section-tag">Core Utilities</span>
+        <h2 class="section-title gradient-flow">Essential Tools for Everyday Tasks</h2>
+        <p class="section-subtitle">Powerful, reliable, and always free</p>
+      </div>
+
+      <!-- QRNode -->
+      <div class="designer-plate">
+        <div class="plate-icon">🔮</div>
+        <div class="plate-content">
+          <h3>QRNode</h3>
+          <p class="plate-tagline">Customizable QR code generator</p>
+          <p class="plate-description">Generate branded QR codes with advanced customization options. Add logos, choose colors, and create professional QR codes for URLs, vCards, text, and more. High-resolution export support for print and digital use.</p>
+          <div class="plate-features">
+            <span>• Custom colors & logos</span>
+            <span>• PNG/SVG export</span>
+            <span>• Multiple data types</span>
+            <span>• High resolution</span>
+          </div>
+          <a href="qrindex.html" class="btn btn-plate magnetic">Launch QRNode →</a>
+        </div>
+      </div>
+
+      <!-- Time Calculator -->
+      <div class="designer-plate reverse">
+        <div class="plate-content">
+          <h3>Time Calculator</h3>
+          <p class="plate-tagline">Date & duration calculations made easy</p>
+          <p class="plate-description">Calculate date differences, plan future events, and manage time intervals with precision. Supports multiple date formats, time zones, and duration formatting. Perfect for project planning and scheduling.</p>
+          <div class="plate-features">
+            <span>• Date difference calculator</span>
+            <span>• Time zone support</span>
+            <span>• Duration formatting</span>
+            <span>• Future date planning</span>
+          </div>
+          <a href="timeindex.html" class="btn btn-plate magnetic">Launch Time Calculator →</a>
+        </div>
+        <div class="plate-icon">🕐</div>
+      </div>
+
+      <!-- Universal Converter -->
+      <div class="designer-plate">
+        <div class="plate-icon">🔄</div>
+        <div class="plate-content">
+          <h3>Universal Converter</h3>
+          <p class="plate-tagline">Convert units across all categories</p>
+          <p class="plate-description">Fast and accurate unit conversions for length, weight, temperature, volume, speed, and more. Supports over 50 unit types with real-time conversion and custom precision settings.</p>
+          <div class="plate-features">
+            <span>• 50+ unit types</span>
+            <span>• Real-time conversion</span>
+            <span>• Currency support</span>
+            <span>• Custom precision</span>
+          </div>
+          <a href="converterindex.html" class="btn btn-plate magnetic">Launch Converter →</a>
+        </div>
+      </div>
+
+      <!-- Key Forge -->
+      <div class="designer-plate reverse">
+        <div class="plate-content">
+          <h3>Key Forge</h3>
+          <p class="plate-tagline">Secure password generation</p>
+          <p class="plate-description">Generate strong, random passwords with customizable length and character sets. Includes real-time strength meter, instant copy functionality, and secure generation algorithms.</p>
+          <div class="plate-features">
+            <span>• Password strength meter</span>
+            <span>• Custom character sets</span>
+            <span>• One-click copy</span>
+            <span>• Secure generation</span>
+          </div>
+          <a href="forge.html" class="btn btn-plate magnetic">Launch Key Forge →</a>
+        </div>
+        <div class="plate-icon">🎨</div>
+      </div>
+
+      <!-- Eligibility Calculator -->
+      <div class="designer-plate">
+        <div class="plate-icon">📊</div>
+        <div class="plate-content">
+          <h3>Eligibility Calculator</h3>
+          <p class="plate-tagline">Exam eligibility & attempt tracking</p>
+          <p class="plate-description">Check eligibility for CDS, UPSC, NDA, AFCAT, and 15+ major competitive exams. Calculate age limits, track remaining attempts, and forecast exam windows with precision.</p>
+          <div class="plate-features">
+            <span>• 15+ exam support</span>
+            <span>• Age calculation</span>
+            <span>• Attempt tracking</span>
+            <span>• Window forecasting</span>
+          </div>
+          <a href="attempthtml.html" class="btn btn-plate magnetic">Launch Eligibility →</a>
+        </div>
+      </div>
+
+      <!-- Health Calculator -->
+      <div class="designer-plate reverse">
+        <div class="plate-content">
+          <h3>Health Calculator</h3>
+          <p class="plate-tagline">Comprehensive health & fitness metrics</p>
+          <p class="plate-description">Calculate BMI, BMR, body fat percentage, and daily calorie needs with detailed explanations. Track health goals with personalized insights and gentle, data-backed guidance.</p>
+          <div class="plate-features">
+            <span>• BMI & BMR calculation</span>
+            <span>• Body fat estimation</span>
+            <span>• Calorie planning</span>
+            <span>• Goal tracking</span>
+          </div>
+          <a href="healthhtml.html" class="btn btn-plate magnetic">Launch Health Calculator →</a>
+        </div>
+        <div class="plate-icon">💪</div>
+      </div>
+
+      <!-- Loan & EMI Calculator -->
+      <div class="designer-plate">
+        <div class="plate-icon">💰</div>
+        <div class="plate-content">
+          <h3>Loan & EMI Calculator</h3>
+          <p class="plate-tagline">Complete loan planning & analysis</p>
+          <p class="plate-description">Calculate EMIs with detailed amortization schedules. Visualize interest vs principal breakdown, simulate prepayments, and explore different loan scenarios with comprehensive insights.</p>
+          <div class="plate-features">
+            <span>• EMI calculation</span>
+            <span>• Amortization table</span>
+            <span>• Interest breakdown</span>
+            <span>• Prepayment analysis</span>
+          </div>
+          <a href="loanhtml.html" class="btn btn-plate magnetic">Launch Loan Calculator →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY BLITZ - NEUMORPHISM CARDS -->
+  <section id="why" class="why-ultimate route-content">
+    <div class="container">
+      <div class="section-header-ultimate">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title gradient-flow">Built for Speed, Designed for Everyone</h2>
+        <p class="section-subtitle">Premium quality, zero cost</p>
+      </div>
+
+      <div class="neuro-benefits-grid">
+        <div class="neuro-card breathe">
+          <div class="neuro-icon">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Optimized for performance with minimal load times across all devices and connections.</p>
+        </div>
+
+        <div class="neuro-card breathe">
+          <div class="neuro-icon">🎨</div>
+          <h3>Beautiful Design</h3>
+          <p>Modern interfaces that are intuitive and delightful to use every single day.</p>
+        </div>
+
+        <div class="neuro-card breathe">
+          <div class="neuro-icon">🔒</div>
+          <h3>Privacy First</h3>
+          <p>Your data stays safe. No tracking, no unnecessary permissions, no compromises.</p>
+        </div>
+
+        <div class="neuro-card breathe">
+          <div class="neuro-icon">🌐</div>
+          <h3>Works Everywhere</h3>
+          <p>Fully responsive and cross-platform. Desktop, tablet, mobile—BLITZ adapts.</p>
+        </div>
+
+        <div class="neuro-card breathe">
+          <div class="neuro-icon">🆓</div>
+          <h3>Completely Free</h3>
+          <p>All tools are free to use with no hidden costs, subscriptions, or limits.</p>
+        </div>
+
+        <div class="neuro-card breathe">
+          <div class="neuro-icon">🚀</div>
+          <h3>Always Evolving</h3>
+          <p>Regular updates and new features based on community feedback and trends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS - FLOATING CARDS -->
+  <section id="community" class="testimonials-ultimate route-content">
+    <div class="container">
+      <div class="section-header-ultimate">
+        <span class="section-tag">Community Love</span>
+        <h2 class="section-title gradient-flow">Trusted by Thousands Worldwide</h2>
+        <p class="section-subtitle">Join the BLITZ community</p>
+      </div>
+
+      <div class="testimonials-floating-grid">
+        <div class="testimonial-float-card">
+          <div class="quote-icon">"</div>
+          <p>The File & PDF tools saved me hours of work. No more switching between multiple apps!</p>
+          <div class="testimonial-author-ultimate">
+            <div class="author-avatar-ultimate">P</div>
+            <div class="author-info">
+              <strong>Priya</strong>
+              <span>Content Creator</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-float-card">
+          <div class="quote-icon">"</div>
+          <p>Background remover is insanely accurate. Game changer for my online store!</p>
+          <div class="testimonial-author-ultimate">
+            <div class="author-avatar-ultimate">A</div>
+            <div class="author-info">
+              <strong>Arjun</strong>
+              <span>E-commerce Owner</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-float-card">
+          <div class="quote-icon">"</div>
+          <p>Clean interface, powerful features, zero hassle. Everything I need in one place.</p>
+          <div class="testimonial-author-ultimate">
+            <div class="author-avatar-ultimate">M</div>
+            <div class="author-info">
+              <strong>Meera</strong>
+              <span>Designer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-float-card">
+          <div class="quote-icon">"</div>
+          <p>Speed test helped me diagnose issues instantly. Incredibly useful for remote work!</p>
+          <div class="testimonial-author-ultimate">
+            <div class="author-avatar-ultimate">R</div>
+            <div class="author-info">
+              <strong>Rahul</strong>
+              <span>Software Engineer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-float-card">
+          <div class="quote-icon">"</div>
+          <p>The AI assistant is surprisingly helpful. I use it daily for brainstorming ideas.</p>
+          <div class="testimonial-author-ultimate">
+            <div class="author-avatar-ultimate">S</div>
+            <div class="author-info">
+              <strong>Sneha</strong>
+              <span>Marketing Manager</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-float-card">
+          <div class="quote-icon">"</div>
+          <p>Health calculator gives clear, actionable insights in simple terms. Love it!</p>
+          <div class="testimonial-author-ultimate">
+            <div class="author-avatar-ultimate">A</div>
+            <div class="author-info">
+              <strong>Amit</strong>
+              <span>Fitness Enthusiast</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA - CINEMATIC -->
+  <section class="cta-ultimate route-content">
+    <div class="cta-aurora-bg"></div>
+    <div class="container cta-ultimate-content">
+      <h2 class="cta-title">Ready to streamline your workflow?</h2>
+      <p class="cta-subtitle">Join thousands of users who trust BLITZ for their daily utilities</p>
+      <a href="#premium" class="btn btn-cta-ultimate magnetic">
+        <span>Explore All Tools</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER - PREMIUM -->
+  <footer class="footer-ultimate route-content">
+    <div class="container">
+      <div class="footer-content-ultimate">
+        <div class="footer-brand-ultimate">
+          <h3 class="logo">BLITZ</h3>
+          <p>Power tools for everyone</p>
+          <div class="footer-socials">
+            <span class="social-badge">🚀 Made by Tejas Parmar</span>
+          </div>
+        </div>
+
+        <div class="footer-links-ultimate">
+          <div class="footer-col-ultimate">
+            <h4>Premium Tools</h4>
+            <a href="filehtml.html">File & PDF Tools</a>
+            <a href="remove-background.html">Background Remover</a>
+            <a href="speedtest.html">Speed Test</a>
+            <a href="velocity.html">Velocity Tracker</a>
+            <a href="chat.html">AI Assistant</a>
+          </div>
+
+          <div class="footer-col-ultimate">
+            <h4>Core Tools</h4>
+            <a href="qrindex.html">QRNode</a>
+            <a href="timeindex.html">Time Calculator</a>
+            <a href="converterindex.html">Converter</a>
+            <a href="forge.html">Key Forge</a>
+          </div>
+
+          <div class="footer-col-ultimate">
+            <h4>Calculators</h4>
+            <a href="attempthtml.html">Eligibility</a>
+            <a href="healthhtml.html">Health</a>
+            <a href="loanhtml.html">Loan & EMI</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-ultimate">
+        <p>© 2025 BLITZ. Crafted with ❤️ by Tejas Parmar. All tools free forever.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="blitzjs.js"></script>
+  <script src="transition.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Crop PDF — BLITZ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="croppdf.css"/>
+  
+  <!-- PDF.js from CDN with fallback -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    window.pdfjsLib || document.write('<script src="libs/pdf.min.js"><\/script>');
+  </script>
+</head>
+<body>
+  <div class="page-curtain"></div>
+
+
+  <!-- NAVBAR WITH ALL 14 PDF TOOLS -->
+  <nav class="navbar route-content">
+    <a href="index.html" class="logo">BLITZ</a>
+    
+    <!-- Desktop Navigation with 4 Dropdowns (>860px) -->
+    <ul class="nav-links">
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="filehtml.html" class="dropdown-item">📄 File & PDF Tools</a>
+          <a href="qrindex.html" class="dropdown-item">🔮 QRNode</a>
+          <a href="forge.html" class="dropdown-item">🎨 FORGE</a>
+          <a href="converterindex.html" class="dropdown-item">🔄 Unit Converter</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Utilities <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="speedtest.html" class="dropdown-item">⚡ Speed Test</a>
+          <a href="velocity.html" class="dropdown-item">🚗 Velocity Tracker</a>
+          <a href="timeindex.html" class="dropdown-item">🕐 World Time</a>
+          <a href="chat.html" class="dropdown-item">🤖 AI Assistant</a>
+          <a href="remove-background.html" class="dropdown-item">🖼️ Background Remover</a>
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">Calculators <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="attempthtml.html" class="dropdown-item">📊 Eligibility</a>
+          <a href="healthhtml.html" class="dropdown-item">💪 Health</a>
+          <a href="loanhtml.html" class="dropdown-item">💰 Loan</a>
+        </div>
+      </li>
+      
+      <!-- 4th DROPDOWN: ALL 14 PDF TOOLS -->
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle">📄 PDF Tools <span class="arrow">▼</span></a>
+        <div class="dropdown-menu">
+          <a href="compress-pdf.html" class="dropdown-item">🗜️ Compress PDF</a>
+          <a href="merge-pdf.html" class="dropdown-item">🔗 Merge PDF</a>
+          <a href="split-pdf.html" class="dropdown-item">✂️ Split PDF</a>
+          <a href="jpg-to-pdf.html" class="dropdown-item">🖼️ JPG to PDF</a>
+          <a href="pdf-to-jpg.html" class="dropdown-item">📸 PDF to JPG</a>
+          <a href="word-to-pdf.html" class="dropdown-item">📝 Word to PDF</a>
+          <span class="dropdown-item disabled">📄 PDF to Word</span>
+          <a href="excel-to-pdf.html" class="dropdown-item">📊 Excel to PDF</a>
+          <span class="dropdown-item disabled">📊 PDF to Excel</span>
+          <a href="watermark-pdf.html" class="dropdown-item">💧 Watermark PDF</a>
+          <a href="organize-pdf.html" class="dropdown-item">📑 Organize PDF</a>
+          <a href="crop-pdf.html" class="dropdown-item active">✂️ Crop PDF</a>
+          <a href="secure-pdf.html" class="dropdown-item">🔒 Secure PDF</a>
+          <a href="sign-pdf.html" class="dropdown-item">✍️ Sign PDF</a>
+        </div>
+      </li>
+    </ul>
+    
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-controls="mobileDrawer" aria-expanded="false">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+  </nav>
+
+
+  <header class="hero route-content">
+    <div class="hero-content">
+      <h1>Crop PDF</h1>
+      <p>Visually crop PDF pages by dragging edges or entering precise values.</p>
+    </div>
+  </header>
+
+
+  <main class="shell route-content">
+    <section class="workbench">
+      
+      <!-- LEFT COLUMN -->
+      <div class="left-col">
+        
+        <!-- Upload Section -->
+        <div class="card upload-card">
+          <div class="card-head">
+            <h2>Upload PDF</h2>
+            <div class="head-actions">
+              <span class="chip server">Server</span>
+              <span class="chip cap">20 MB</span>
+            </div>
+          </div>
+
+
+          <div class="group">
+            <label for="fileInput">Choose a PDF to crop</label>
+            <div id="dropzone" class="dropzone" tabindex="0" aria-label="Drop PDF here or use the uploader">
+              <div class="dz-inner">
+                <div class="dz-ico">📄</div>
+                <div class="dz-text">
+                  <strong>Drag & drop</strong> a PDF, or
+                  <button type="button" class="link-btn" id="browseBtn">browse</button>
+                </div>
+                <div class="dz-sub">Accepted: .pdf • Up to 20 MB</div>
+              </div>
+              <input id="fileInput" type="file" accept="application/pdf" hidden />
+            </div>
+            <p class="note">Upload a PDF to preview and set crop margins.</p>
+          </div>
+        </div>
+
+
+        <!-- Crop Editor Section -->
+        <div class="card crop-card" id="cropCard" style="display:none;">
+          <div class="card-head">
+            <h2>Crop Editor</h2>
+            <div class="head-actions">
+              <span class="chip" id="pageIndicator">Page 1 of 1</span>
+              <button type="button" id="resetCropBtn" class="btn-small">Reset Crop</button>
+            </div>
+          </div>
+
+
+          <!-- Page Navigation -->
+          <div class="page-nav">
+            <button type="button" id="prevPageBtn" class="nav-btn" disabled>◀ Prev</button>
+            <div class="page-jump">
+              <label for="pageJump">Jump to:</label>
+              <input type="number" id="pageJump" min="1" value="1" />
+              <button type="button" id="goPageBtn" class="btn-small">Go</button>
+            </div>
+            <button type="button" id="nextPageBtn" class="nav-btn">Next ▶</button>
+          </div>
+
+
+          <!-- Visual Crop Preview -->
+          <div id="cropPreview" class="crop-preview">
+            <div id="loadingCrop" class="loading-message">
+              <div class="spinner"></div>
+              <p>Loading page preview...</p>
+            </div>
+            
+            <!-- Crop Container -->
+            <div id="cropContainer" class="crop-container" style="display:none;">
+              <canvas id="pageCanvas"></canvas>
+              
+              <!-- Draggable handles -->
+              <div class="crop-handle crop-handle-top" id="handleTop"></div>
+              <div class="crop-handle crop-handle-bottom" id="handleBottom"></div>
+              <div class="crop-handle crop-handle-left" id="handleLeft"></div>
+              <div class="crop-handle crop-handle-right" id="handleRight"></div>
+              
+              <!-- Shaded overlay to show cropped areas -->
+              <div class="crop-overlay crop-overlay-top" id="overlayTop"></div>
+              <div class="crop-overlay crop-overlay-bottom" id="overlayBottom"></div>
+              <div class="crop-overlay crop-overlay-left" id="overlayLeft"></div>
+              <div class="crop-overlay crop-overlay-right" id="overlayRight"></div>
+            </div>
+          </div>
+
+
+          <!-- Numeric Inputs -->
+          <div class="crop-inputs">
+            <div class="input-row">
+              <div class="input-group">
+                <label for="cropTop">Top (px)</label>
+                <input type="number" id="cropTop" min="0" value="0" />
+              </div>
+              <div class="input-group">
+                <label for="cropBottom">Bottom (px)</label>
+                <input type="number" id="cropBottom" min="0" value="0" />
+              </div>
+            </div>
+            <div class="input-row">
+              <div class="input-group">
+                <label for="cropLeft">Left (px)</label>
+                <input type="number" id="cropLeft" min="0" value="0" />
+              </div>
+              <div class="input-group">
+                <label for="cropRight">Right (px)</label>
+                <input type="number" id="cropRight" min="0" value="0" />
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Apply Options -->
+          <div class="apply-options">
+            <label class="checkbox-label">
+              <input type="checkbox" id="applyToAll" checked />
+              <span>Apply crop to all pages</span>
+            </label>
+            <p class="note">If unchecked, crop will only apply to current page.</p>
+          </div>
+
+
+          <div class="actions">
+            <button type="button" id="downloadBtn" class="btn primary">Download Cropped PDF</button>
+            <button type="button" id="resetBtn" class="btn">Reset All</button>
+          </div>
+        </div>
+        
+      </div>
+
+
+      <!-- RIGHT COLUMN: Status -->
+      <div class="card result-card">
+        <div class="card-head">
+          <h3>Status</h3>
+          <span class="eye"></span>
+        </div>
+
+
+        <div class="status-wrap">
+          <div id="statusLine" class="status-line dim">Upload a PDF to begin.</div>
+          <div class="progress">
+            <div id="progressBar" class="bar" style="width:0%"></div>
+          </div>
+
+
+          <div class="stack mt-1">
+            <div class="kpi">
+              <div id="kOriginalSize" class="kpi-num">—</div>
+              <div class="kpi-label">Original Page Size</div>
+            </div>
+            <div class="kpi">
+              <div id="kNewSize" class="kpi-num">—</div>
+              <div class="kpi-label">Cropped Page Size</div>
+            </div>
+          </div>
+
+
+          <div class="stack mt-1">
+            <div id="advice" class="bloc subtle-bloc">
+              <div class="bloc-head"><h4>Guidance</h4></div>
+              <p class="note">Drag the edge handles or enter values to crop. The shaded areas show what will be removed. You can navigate between pages and apply different crops or use the same crop for all pages.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+  </main>
+
+
+  <footer class="footer route-content">
+    <p>BLITZ - by Tejas Parmar</p>
+  </footer>
+
+
+  <!-- Global drop overlay -->
+  <div id="globalDrop" class="global-drop" aria-hidden="true">
+    <div class="gd-panel">
+      <div class="gd-ico">⬇️</div>
+      <div class="gd-text">Drop PDF anywhere</div>
+    </div>
+  </div>
+
+
+  <script src="croppdf.js"></script>
+  <script src="transition.js"></script>
+
+
+  <!-- MOBILE DRAWER - SIMPLE FLAT LIST -->
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <nav class="drawer-nav">
+      <a href="qrindex.html">QRNode</a>
+      <a href="timeindex.html">Time</a>
+      <a href="converterindex.html">Converter</a>
+      <a href="forge.html">FORGE</a>
+      <a href="attempthtml.html">Eligibility</a>
+      <a href="healthhtml.html">Health</a>
+      <a href="loanhtml.html">Loan</a>
+      <a href="filehtml.html" class="active" id="drawerFilePdf">File & PDF</a>
+      <a href="speedtest.html">Speed Test</a>
+      <a href="velocity.html">Velocity</a>
+      <a href="chat.html">AI Assistant</a>
+      <a href="remove-background.html">BG Remover</a>
+    </nav>
+  </aside>
+  <script src="nav.js"></script>
+</body>
+</html>
