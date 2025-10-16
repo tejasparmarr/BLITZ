@@ -119,7 +119,7 @@ function bindActions(){
         setStatus('☁️ Uploading to server...'); 
         setProgress(35);
         
-        const response = await fetch('http://localhost:3000/api/jpg-to-pdf', {
+        const response = await fetch('https://blitz-backend-wdwl.onrender.com/api/jpg-to-pdf', {
           method: 'POST',
           body: formData
         });

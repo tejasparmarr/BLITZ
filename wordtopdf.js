@@ -103,7 +103,7 @@ function bindGlobalDrop(){
 
 // ✨ NEW: Real backend conversion
 async function convertWordToPdf(file) {
-  const API_URL = 'http://localhost:3000/api/word-to-pdf';
+  const API_URL = 'https://blitz-backend-wdwl.onrender.com/api/word-to-pdf';
   
   const formData = new FormData();
   formData.append('file', file);

@@ -259,7 +259,7 @@ function bindActions(){
         setStatus('☁️ Uploading to server...'); 
         setProgress(35);
         
-        const response = await fetch('http://localhost:3000/api/merge-pdf', {
+        const response = await fetch('https://blitz-backend-wdwl.onrender.com/api/merge-pdf', {
           method: 'POST',
           body: formData
         });

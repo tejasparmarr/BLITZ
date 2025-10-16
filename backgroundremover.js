@@ -1,7 +1,7 @@
 const $ = s => document.querySelector(s);
 
 // Configuration - UPDATE THIS AFTER DEPLOYMENT
-const API_BASE = 'http://localhost:3000'; // Change to your Render URL in production
+const API_BASE = 'https://blitz-backend-wdwl.onrender.com'; // Change to your Render URL in production
 
 let selectedFile = null;
 let processedImageBlob = null;

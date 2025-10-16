@@ -381,7 +381,7 @@ function bindActions(){
         setStatus('☁️ Uploading to server...');
         setProgress(70);
         
-        const response = await fetch('http://localhost:3000/api/organize-pdf', {
+        const response = await fetch('https://blitz-backend-wdwl.onrender.com/api/organize-pdf', {
           method: 'POST',
           body: formData
         });

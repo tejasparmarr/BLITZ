@@ -77,7 +77,7 @@ function bindGlobalDrop(){
 
 // ✨ Real backend conversion
 async function convertExcelToPdf(file) {
-  const API_URL = 'http://localhost:3000/api/excel-to-pdf';
+  const API_URL = 'https://blitz-backend-wdwl.onrender.com/api/excel-to-pdf';
   
   const formData = new FormData();
   formData.append('file', file);
