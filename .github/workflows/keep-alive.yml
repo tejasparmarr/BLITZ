@@ -1,0 +1,52 @@
+name: Keep Backend Alive
+
+on:
+  schedule:
+    # Ping every 14 minutes
+    - cron: '*/14 * * * *'
+  workflow_dispatch: # Allows manual trigger from Actions tab
+
+jobs:
+  ping-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Current IST Time
+        id: check_time
+        run: |
+          # Get current hour in IST (UTC+5:30)
+          current_utc_hour=$(date -u +%H)
+          current_utc_min=$(date -u +%M)
+          
+          # Convert to IST (add 5 hours 30 minutes)
+          total_minutes=$(( current_utc_hour * 60 + current_utc_min + 330 ))
+          ist_hour=$(( (total_minutes / 60) % 24 ))
+          
+          echo "Current IST Hour: $ist_hour"
+          
+          # Sleep hours: 3-6 AM IST (skip ping)
+          if [ $ist_hour -ge 3 ] && [ $ist_hour -lt 6 ]; then
+            echo "🌙 Sleep time (3-6 AM IST) - Letting backend rest"
+            echo "should_ping=false" >> $GITHUB_OUTPUT
+          else
+            echo "☀️ Active hours - Pinging backend"
+            echo "should_ping=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Ping BLITZ Backend
+        if: steps.check_time.outputs.should_ping == 'true'
+        run: |
+          echo "🏓 Pinging backend at $(date)"
+          response=$(curl -s -o /dev/null -w "%{http_code}" https://blitz-backend-wdwl.onrender.com/health)
+          
+          if [ $response -eq 200 ]; then
+            echo "✅ Backend is alive! Response: $response"
+          else
+            echo "⚠️ Backend returned: $response"
+            exit 1
+          fi
+      
+      - name: Sleep Mode Message
+        if: steps.check_time.outputs.should_ping == 'false'
+        run: |
+          echo "💤 Backend sleeping (3-6 AM IST)"
+          echo "Next ping will be at 6:00 AM IST"
