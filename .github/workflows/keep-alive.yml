@@ -2,8 +2,8 @@ name: Keep Backend Alive
 
 on:
   schedule:
-    # Ping every 14 minutes
-    - cron: '*/14 * * * *'
+    # Ping every 8 minutes (changed from 14)
+    - cron: '*/8 * * * *'
   workflow_dispatch: # Allows manual trigger from Actions tab
 
 jobs:
@@ -50,3 +50,4 @@ jobs:
         run: |
           echo "💤 Backend sleeping (3-6 AM IST)"
           echo "Next ping will be at 6:00 AM IST"
+
